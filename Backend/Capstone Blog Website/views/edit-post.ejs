@@ -1,0 +1,63 @@
+<%- include("partials/header", { title: "Edit Post" }) %>
+
+<div class="form-page">
+  <div class="form-header">
+    <a href="/" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+    <h1><i class="fa-solid fa-pen-to-square"></i> Edit Post</h1>
+    <p>Update your post details below.</p>
+  </div>
+
+  <div class="form-card">
+    <form action="/posts/<%= post.id %>" method="POST" class="post-form">
+      <div class="form-group">
+        <label for="title">Post Title <span class="required">*</span></label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%= post.title %>"
+          required
+          maxlength="150"
+          autofocus
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author Name</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          value="<%= post.author %>"
+          maxlength="80"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="content">Content <span class="required">*</span></label>
+        <textarea
+          id="content"
+          name="content"
+          rows="14"
+          required
+        ><%= post.content %></textarea>
+      </div>
+
+      <div class="post-info-bar">
+        <i class="fa-regular fa-clock"></i>
+        Originally published on <strong><%= post.date %></strong>
+      </div>
+
+      <div class="form-actions">
+        <a href="/" class="btn btn-ghost">Cancel</a>
+        <button type="submit" class="btn btn-primary">
+          <i class="fa-solid fa-floppy-disk"></i> Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
